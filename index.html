@@ -1,278 +1,99 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>fat-aar-android</title>
+    <title>Wang Ningtao's Blog | 王宁涛的个人博客</title>
     <style>
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
             line-height: 1.6;
-            max-width: 1000px;
+            max-width: 800px;
             margin: 0 auto;
             padding: 20px;
+            color: #333;
+            background-color: #f5f5f5;
         }
-        pre {
-            background-color: #f6f8fa;
-            padding: 16px;
-            border-radius: 6px;
-            overflow-x: auto;
+        .container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
-        code {
-            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
         }
-        table {
-            border-collapse: collapse;
-            width: 100%;
-            margin: 16px 0;
+        .header h1 {
+            color: #2c3e50;
+            margin-bottom: 10px;
         }
-        th, td {
-            border: 1px solid #dfe2e5;
-            padding: 8px;
-            text-align: left;
+        .github-links {
+            margin: 20px 0;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: 5px;
         }
-        th {
-            background-color: #f6f8fa;
+        .github-links a {
+            color: #0366d6;
+            text-decoration: none;
+            display: block;
+            margin: 10px 0;
         }
-        img {
-            max-width: 100%;
+        .github-links a:hover {
+            text-decoration: underline;
         }
-        blockquote {
-            border-left: 4px solid #dfe2e5;
-            margin: 0;
-            padding-left: 16px;
-            color: #6a737d;
+        .description {
+            font-size: 1.1em;
+            color: #555;
+            line-height: 1.8;
+        }
+        .footer {
+            margin-top: 40px;
+            text-align: center;
+            color: #666;
+            font-size: 0.9em;
+        }
+        .bilingual {
+            margin-bottom: 20px;
+        }
+        .bilingual p:first-child {
+            margin-bottom: 5px;
+        }
+        .bilingual p:last-child {
+            color: #666;
+            font-style: italic;
         }
     </style>
 </head>
 <body>
-    <h1>fat-aar-android</h1>
+    <div class="container">
+        <div class="header">
+            <h1>Wang Ningtao | 王宁涛</h1>
+            <p class="description">Welcome to my personal blog | 欢迎来到我的个人博客</p>
+        </div>
 
-    <p>
-        <a href="https://github.com/kezong/fat-aar-android/blob/master/LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="license"></a>
-        <a href="https://maven-badges.herokuapp.com/maven-central/com.github.kezong/fat-aar"><img src="https://maven-badges.herokuapp.com/maven-central/com.github.kezong/fat-aar/badge.svg" alt="Maven Central"></a>
-    </p>
+        <div class="github-links">
+            <h2>My GitHub Accounts | 我的 GitHub 账号</h2>
+            <a href="https://github.com/JackeeWang-byte" target="_blank">@JackeeWang-byte</a>
+            <a href="https://github.com/wwwVolley" target="_blank">@wwwVolley</a>
+        </div>
 
-    <p><a href="./README_CN.md">中文文档</a></p>
+        <div class="description">
+            <div class="bilingual">
+                <p>Hello! I'm Wang Ningtao, a developer passionate about creating and sharing open-source projects. I maintain two GitHub accounts where I share various projects and collaborate with the community.</p>
+                <p>你好！我是王宁涛，一位热爱创建和分享开源项目的开发者。我维护着两个 GitHub 账号，在这里分享各种项目并与社区合作。</p>
+            </div>
+            
+            <div class="bilingual">
+                <p>Some of my projects are shared between these accounts, and I welcome everyone to use and contribute to them. I'm continuously working on new projects and improvements, so stay tuned for more exciting developments!</p>
+                <p>我的一些项目在这两个账号之间共享，欢迎所有人使用和贡献。我正在持续开发新的项目和改进，敬请期待更多精彩内容！</p>
+            </div>
+        </div>
 
-    <blockquote>
-        <p><strong>I am no longer engaged in research and development, so the project will not be updated and maintained.<br></strong>
-        <strong>You can try to use the following steps to reference the remote plugin. If it doesn't work on the new version of gradle, you can fork or download this project to modify it, the code of this project is not very complex.</strong></p>
-        <p><strong>P.S. Hope Google can support this damn feature as soon as possible.</strong></p>
-    </blockquote>
-
-    <p>The solution of merging aar works with <a href="https://developer.android.google.cn/studio/releases/gradle-plugin.html">AGP</a> <code>3.0</code> and higher. (Tested in AGP 3.0 - 7.1.0, and Gradle 4.9 - 7.3)</p>
-
-    <h2>Getting Started</h2>
-
-    <h3>Step 1: Add classpath</h3>
-    <h4>Add snippet below to your root build script file:</h4>
-    <p>For Maven Central (The lastest release is available on <a href="https://maven-badges.herokuapp.com/maven-central/com.github.kezong/fat-aar">Maven Central</a>):</p>
-    <pre><code class="language-groovy">buildscript {
-    repositories {
-        mavenCentral()
-    }
-    dependencies {
-        classpath 'com.github.kezong:fat-aar:1.3.8'
-    }
-}</code></pre>
-
-    <h3>Step 2: Add plugin</h3>
-    <p>Add snippet below to the <code>build.gradle</code> of your main android library:</p>
-    <pre><code class="language-groovy">apply plugin: 'com.kezong.fat-aar'</code></pre>
-
-    <h3>Step 3: Embed dependencies</h3>
-    <p>Declare <code>embed</code> for the dependencies you want to merge in <code>build.gradle</code>.</p>
-    <p>The usage is similar to <code>implementation</code>, like this:</p>
-
-    <pre><code class="language-groovy">dependencies {
-    implementation fileTree(dir: 'libs', include: '*.jar')
-    // java dependency
-    embed project(path: ':lib-java', configuration: 'default')
-    // aar dependency
-    embed project(path: ':lib-aar', configuration: 'default')
-    // aar dependency
-    embed project(path: ':lib-aar2', configuration: 'default')
-    // local full aar dependency, just build in flavor1
-    flavor1Embed project(path: ':lib-aar-local', configuration: 'default')
-    // local full aar dependency, just build in debug
-    debugEmbed(name: 'lib-aar-local2', ext: 'aar')
-    // remote jar dependency
-    embed 'com.google.guava:guava:20.0'
-    // remote aar dependency
-    embed 'com.facebook.fresco:fresco:1.12.0'
-    // don't want to embed in
-    implementation('androidx.appcompat:appcompat:1.2.0')
-}</code></pre>
-
-    <h3>Transitive</h3>
-
-    <h4>Local Dependency</h4>
-    <p>If you want to include local transitive dependencies in final artifact, you must add <code>embed</code> for transitive dependencies in your main library.</p>
-    <p>For example, mainLib depend on subLib1, subLib1 depend on subLib2, If you want include all dependencies in the final artifact, you must add <code>embed</code> for subLib1 and subLib2 in mainLib <code>build.gradle</code></p>
-
-    <h4>Remote Dependency</h4>
-    <p>If you want to inlcude all of the remote transitive dependencies which are in POM file, you need change the <code>transitive</code> value to true in your <code>build.gradle</code>, like this:</p>
-    <pre><code class="language-groovy">fataar {
-    /**
-     * If transitive is true, local jar module and remote library's dependencies will be embed. (local aar module does not support)
-     * If transitive is false, just embed first level dependency
-     * Default value is false
-     * @since 1.3.0
-     */
-    transitive = true
-}</code></pre>
-
-    <p>If you change the transitive value to true,and want to ignore a dependency in its POM file, you can add exclude keywords, like this:</p>
-    <pre><code class="language-groovy">embed('com.facebook.fresco:fresco:1.11.0') {
-    // exclude all dependencies
-    transitive = false
-    // exclude any group or module
-    exclude(group:'com.facebook.soloader', module:'soloader')
-}</code></pre>
-
-    <p><strong>More usage see <a href="./example">example</a>.</strong></p>
-
-    <h2>About AAR File</h2>
-    <p>AAR is a file format for android library.
-The file itself is a zip file that containing useful stuff in android.
-See <a href="https://developer.android.com/studio/projects/android-library.html#aar-contents">anatomy of an aar file here</a>.</p>
-
-    <p><strong>support list for now:</strong></p>
-    <ul>
-        <li>[x] Flavors</li>
-        <li>[x] AndroidManifest merge</li>
-        <li>[x] Classes merge</li>
-        <li>[x] Jar merge</li>
-        <li>[x] Res merge</li>
-        <li>[x] Assets merge</li>
-        <li>[x] Jni libs merge</li>
-        <li>[x] R.txt merge</li>
-        <li>[x] R.class merge</li>
-        <li>[x] DataBinding merge</li>
-        <li>[x] Proguard merge</li>
-        <li>[x] Kotlin module merge</li>
-    </ul>
-
-    <h2>Gradle Version Support</h2>
-    <table>
-        <tr>
-            <th>Version</th>
-            <th>Gradle Plugin</th>
-            <th>Gradle</th>
-        </tr>
-        <tr>
-            <td>1.0.1</td>
-            <td>3.1.0 - 3.2.1</td>
-            <td>4.4 - 6.0</td>
-        </tr>
-        <tr>
-            <td>1.1.6</td>
-            <td>3.1.0 - 3.4.1</td>
-            <td>4.4 - 6.0</td>
-        </tr>
-        <tr>
-            <td>1.1.10</td>
-            <td>3.0.0 - 3.4.1</td>
-            <td>4.1 - 6.0</td>
-        </tr>
-        <tr>
-            <td>1.2.6</td>
-            <td>3.0.0 - 3.5.0</td>
-            <td>4.1 - 6.0</td>
-        </tr>
-        <tr>
-            <td>1.2.8</td>
-            <td>3.0.0 - 3.5.9</td>
-            <td>4.1 - 6.8</td>
-        </tr>
-        <tr>
-            <td>1.2.11 - 1.2.14</td>
-            <td>3.0.0 - 3.6.9</td>
-            <td>4.1 - 6.8</td>
-        </tr>
-        <tr>
-            <td>1.2.15 - 1.2.16</td>
-            <td>3.0.0 - 4.0.2</td>
-            <td>4.1 - 6.8</td>
-        </tr>
-        <tr>
-            <td>1.2.17</td>
-            <td>3.0.0 - 4.0.2</td>
-            <td>4.9 - 6.8</td>
-        </tr>
-        <tr>
-            <td>1.2.18+</td>
-            <td>3.0.0 - 4.1.0</td>
-            <td>4.9 - 6.8</td>
-        </tr>
-        <tr>
-            <td>1.3.+</td>
-            <td>3.0.0 - 4.1.0</td>
-            <td>4.9 - 6.8</td>
-        </tr>
-        <tr>
-            <td>1.3.4 - 1.3.5</td>
-            <td>3.0.0 - 4.1.0</td>
-            <td>4.9+</td>
-        </tr>
-        <tr>
-            <td>1.3.6</td>
-            <td>3.0.0 - 4.2.0</td>
-            <td>4.9+</td>
-        </tr>
-        <tr>
-            <td>1.3.8</td>
-            <td>3.0.0+</td>
-            <td>4.9+</td>
-        </tr>
-    </table>
-
-    <p>The following link which version of Gradle is required for each version of the Android Gradle plugin. For the best performance, you should use the latest possible version of both Gradle and the plugin.</p>
-
-    <p><a href="https://developer.android.google.cn/studio/releases/gradle-plugin.html">Plugin version and Required Gradle version</a></p>
-
-    <h2>Version Log</h2>
-    <ul>
-        <li><a href="https://github.com/kezong/fat-aar-android/releases/tag/v1.3.8">1.3.8</a>
-            <ul>
-                <li>Fix the issue that plugin cannot be used in jdk 1.8 <a href="https://github.com/kezong/fat-aar-android/issues/371">#371</a></li>
-            </ul>
-        </li>
-        <li><a href="https://github.com/kezong/fat-aar-android/releases/tag/v1.3.7">1.3.7</a>
-            <ul>
-                <li>Fix productFlavor detection in embed submodules <a href="https://github.com/kezong/fat-aar-android/issues/348">#348</a></li>
-                <li>Support missingDimensionStrategy without productFlavors in current project. <a href="https://github.com/kezong/fat-aar-android/issues/343">#343</a></li>
-            </ul>
-        </li>
-        <!-- 更多版本日志... -->
-    </ul>
-
-    <h2>Known Defects or Issues</h2>
-    <ul>
-        <li><strong>Application cannot directly rely on embedded project：</strong> application cannot directly rely on your embedded project. It must rely on the AAR file compiled by your embedded project
-            <ul>
-                <li>For debugging convenience, you can use <code>embed</code> in the main library project when you choose to package aar. When you need to run the app directly, you can use <code>implementation</code> or <code>api</code></li>
-            </ul>
-        </li>
-        <li><strong>Res merge conflicts.</strong> If the library res folder and embedded dependencies res have the same res Id(mostly <code>string/app_name</code>). A duplicate resources build exception will be thrown. To avoid res conflicts:
-            <ul>
-                <li>consider using a prefix to each res Id, both in library res and aar dependencies if possible.</li>
-                <li>Adding <code>android.disableResourceValidation=true</code> to <code>gradle.properties</code> can do a trick to skip the exception.</li>
-            </ul>
-        </li>
-        <li><strong>Proguard</strong>
-            <ul>
-                <li>If <code>minifyEnabled</code> is set to true, classes not referenced in the project will be filtered according to Proguard rules during compile, resulting in ClassNotFound during app compile.
-                Most AAR is SDK that provide interfaces. It is recommended that you carefully comb Proguard files and add keep rules.</li>
-            </ul>
-        </li>
-    </ul>
-
-    <h2>Thanks</h2>
-    <ul>
-        <li><a href="https://github.com/adwiv/android-fat-aar">android-fat-aar</a></li>
-        <li><a href="https://github.com/Vigi0303/fat-aar-plugin">fat-aar-plugin</a></li>
-    </ul>
+        <div class="footer">
+            <p>© 2024 Wang Ningtao | 王宁涛. All rights reserved | 保留所有权利.</p>
+        </div>
+    </div>
 </body>
 </html>
